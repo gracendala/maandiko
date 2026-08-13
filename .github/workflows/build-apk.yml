@@ -41,9 +41,10 @@ jobs:
           npx cap add android
           npx cap sync android
 
-      - name: Regenerate Gradle Wrapper & Fix Kotlin Dependencies
+      - name: Configure AGP 8.8.2, Gradle Wrapper & Kotlin Dependencies
         run: |
           cd android
+          sed -i 's/classpath .com.android.tools.build:gradle:.*/classpath "com.android.tools.build:gradle:8.8.2"/' build.gradle
           gradle wrapper --gradle-version 8.11.1
           cat << 'EOF' >> app/build.gradle
 
