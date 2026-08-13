@@ -41,15 +41,19 @@ jobs:
           npx cap add android
           npx cap sync android
 
-      - name: Configure AGP 8.8.2, Gradle Wrapper & Kotlin Dependencies
+      - name: Configure AGP 8.9.1, Gradle Wrapper & Dependencies
         run: |
           cd android
-          sed -i 's/classpath .com.android.tools.build:gradle:.*/classpath "com.android.tools.build:gradle:8.8.2"/' build.gradle
+          sed -i 's/classpath .com.android.tools.build:gradle:.*/classpath "com.android.tools.build:gradle:8.9.1"/' build.gradle
           gradle wrapper --gradle-version 8.11.1
           cat << 'EOF' >> app/build.gradle
 
           configurations.all {
               resolutionStrategy {
+                  force 'androidx.core:core:1.15.0'
+                  force 'androidx.core:core-ktx:1.15.0'
+                  force 'androidx.activity:activity:1.10.0'
+                  force 'androidx.activity:activity-ktx:1.10.0'
                   force 'org.jetbrains.kotlin:kotlin-stdlib:1.9.22'
                   force 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.22'
                   force 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.22'
