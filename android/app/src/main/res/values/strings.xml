@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">MaAndiko Remote</string>
+    <string name="title_activity_main">MaAndiko Remote</string>
+    <string name="package_name">com.maandiko.remote</string>
+    <string name="custom_url_scheme">com.maandiko.remote</string>
+</resources>

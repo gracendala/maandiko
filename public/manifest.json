@@ -1,0 +1,17 @@
+{
+  "short_name": "MaAndiko Remote",
+  "name": "MaAndiko Remote - Télécommande Mobile",
+  "description": "Application de télécommande mobile pour la projection des Prédications, Cantiques et la Sainte Bible",
+  "icons": [
+    {
+      "src": "/icon.png",
+      "type": "image/png",
+      "sizes": "192x192 512x512"
+    }
+  ],
+  "start_url": "/remote",
+  "background_color": "#090d16",
+  "theme_color": "#0f172a",
+  "display": "standalone",
+  "orientation": "portrait"
+}

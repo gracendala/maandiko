@@ -1,0 +1,6 @@
+{
+  "name": "MaAndiko Studio",
+  "description": "Plateforme de projection et gestion de brochures de sermons.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

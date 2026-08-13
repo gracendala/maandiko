@@ -1,0 +1,59 @@
+{
+  "ecrans": {
+    "audience": {
+      "id": "audience",
+      "name": "Écran Audience (HDMI / Projecteur)",
+      "outputType": "hdmi",
+      "description": "Sortie HDMI Principale Vidéoprojecteur & Projection",
+      "enabled": true,
+      "defaultThemeId": "",
+      "moduleThemes": {
+        "brochures": "",
+        "lyrics": "",
+        "bible": ""
+      },
+      "style": {
+        "mode": "CENTER_CARD",
+        "theme": "custom",
+        "align": "center",
+        "fontFamily": "Inter",
+        "textColor": "#FFFFFF",
+        "containerBg": "rgba(13, 17, 23, 0.95)",
+        "containerBorderColor": "rgba(56, 189, 248, 0.25)",
+        "containerBorderWidth": 1,
+        "containerBorderRadius": 20,
+        "containerPadding": 36,
+        "showHeader": true,
+        "showBadge": true
+      }
+    },
+    "stage": {
+      "id": "stage",
+      "name": "Écran Stage / Prompteur (HDMI)",
+      "outputType": "stage",
+      "description": "Retour Scène, Teleprompter & URL Distante",
+      "enabled": true,
+      "defaultThemeId": "",
+      "moduleThemes": {
+        "brochures": "",
+        "lyrics": "",
+        "bible": ""
+      },
+      "style": {
+        "mode": "TOP_BANNER",
+        "theme": "dark",
+        "align": "left",
+        "fontFamily": "Inter",
+        "textColor": "#FFEB3B",
+        "containerBg": "#000000",
+        "containerBorderColor": "#FFEB3B",
+        "containerBorderWidth": 2,
+        "containerBorderRadius": 8,
+        "containerPadding": 24,
+        "showHeader": true,
+        "showBadge": true
+      }
+    }
+  },
+  "themes": []
+}
