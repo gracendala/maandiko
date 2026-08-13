@@ -1,0 +1,9 @@
+{
+	"appId": "com.maandiko.remote",
+	"appName": "MaAndiko Remote",
+	"webDir": "dist",
+	"server": {
+		"androidScheme": "https",
+		"cleartext": true
+	}
+}

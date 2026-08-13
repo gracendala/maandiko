@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MaAndiko Studio - Chargement</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      width: 100vw;
+      height: 100vh;
+      background: #0b0f19;
+      color: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+      -webkit-app-region: drag;
+      overflow: hidden;
+      border: 1px solid rgba(0, 210, 255, 0.25);
+      border-radius: 16px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
+    }
+    .splash-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 30px;
+    }
+    .logo-container {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      margin-bottom: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .logo-img {
+      width: 82px;
+      height: 82px;
+      object-fit: contain;
+      z-index: 2;
+      filter: drop-shadow(0 6px 16px rgba(0, 210, 255, 0.35));
+    }
+    .glow-ring {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 210, 255, 0.2) 0%, rgba(0, 120, 212, 0) 70%);
+      animation: pulseGlow 2s infinite ease-in-out;
+    }
+    .border-ring {
+      position: absolute;
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      border: 2px solid rgba(0, 210, 255, 0.4);
+      animation: pulseBorder 2s infinite ease-in-out;
+    }
+    @keyframes pulseGlow {
+      0%, 100% { transform: scale(0.9); opacity: 0.5; }
+      50% { transform: scale(1.2); opacity: 0.9; }
+    }
+    @keyframes pulseBorder {
+      0%, 100% { transform: scale(0.92); opacity: 0.4; }
+      50% { transform: scale(1.08); opacity: 0.8; }
+    }
+    .app-title {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      background: linear-gradient(135deg, #ffffff 30%, #a5f3fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 6px;
+    }
+    .app-subtitle {
+      font-size: 11px;
+      color: #38bdf8;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 30px;
+      opacity: 0.9;
+    }
+    .progress-container {
+      width: 280px;
+      height: 5px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .progress-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 45%;
+      background: linear-gradient(90deg, #0078d4, #00d2ff, #38bdf8);
+      border-radius: 10px;
+      box-shadow: 0 0 12px rgba(0, 210, 255, 0.6);
+      animation: indeterminate 1.6s infinite ease-in-out;
+    }
+    @keyframes indeterminate {
+      0% { left: -45%; width: 35%; }
+      50% { width: 65%; }
+      100% { left: 100%; width: 35%; }
+    }
+    .status-text {
+      font-size: 12px;
+      color: #94a3b8;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <div class="splash-card">
+    <div class="logo-container">
+      <div class="glow-ring"></div>
+      <div class="border-ring"></div>
+      <img src="icon.png" class="logo-img" alt="MaAndiko Studio Logo" onerror="this.src='logo.png'" />
+    </div>
+    <div class="app-title">MaAndiko Studio</div>
+    <div class="app-subtitle">Régie de Projection Pro</div>
+    <div class="progress-container">
+      <div class="progress-bar"></div>
+    </div>
+    <div class="status-text">Chargement des modules et du serveur...</div>
+  </div>
+</body>
+</html>
