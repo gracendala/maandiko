@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { io, Socket } from 'socket.io-client';
-import { Capacitor } from '@capacitor/core';
-import capacitorConfig from '../capacitor.config.json';
 import { openProjectorWindow } from './utils/projectorWindow';
 import { Sermon, Paragraphe, ProjectedData, ProjectionStyle, ProjectionScreenConfig, ThemePreset, ActiveModule } from './types';
 import { TopBar } from './components/TopBar';
@@ -19,7 +17,6 @@ import { AddParagraphModal } from './components/AddParagraphModal';
 import { DatabaseModal } from './components/DatabaseModal';
 import { DataDirSettingsModal } from './components/DataDirSettingsModal';
 import { ProjectionView } from './components/ProjectionView';
-import { MobileRemoteView } from './components/MobileRemoteView';
 import { ProjectionStyleModal } from './components/ProjectionStyleModal';
 import { NetworkShareModal } from './components/NetworkShareModal';
 import { HelpModal } from './components/HelpModal';
@@ -27,35 +24,13 @@ import { getBlocksFromText } from './utils/textUtils';
 import { AlertTriangle, Trash2, X } from 'lucide-react';
 
 export default function App() {
-  // Standalone Projection View & Mobile Remote routing for standard, ultra-short URLs & Capacitor APK
+  // Standalone Projection View & Mobile Remote routing for standard URLs
   if (typeof window !== 'undefined') {
     const p = window.location.pathname.toLowerCase();
     const searchParams = new URLSearchParams(window.location.search);
     const modeParam = searchParams.get('mode') || searchParams.get('view');
 
-    // Detect if running inside Capacitor Native Android/iOS APK or mobile device environment
-    const isCapacitorNative = Capacitor.isNativePlatform() || 
-      Boolean((window as any).Capacitor?.isNativePlatform?.()) ||
-      Boolean((window as any).Capacitor?.platform && (window as any).Capacitor?.platform !== 'web') ||
-      window.location.protocol === 'capacitor:' ||
-      window.location.href.includes('android_asset');
-
-    const isEnvForceRemote = import.meta.env.VITE_FORCE_REMOTE_VIEW === 'true';
-    const isCapacitorConfigForceRemote = Boolean(capacitorConfig?.forceRemoteView);
-
-    const isMobileDevice = typeof window.orientation !== 'undefined' || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
-
-    console.log('[Routing Debug]', {
-      p,
-      isCapacitorNative,
-      isEnvForceRemote,
-      isCapacitorConfigForceRemote,
-      isMobileDevice,
-      modeParam,
-      userAgent: navigator.userAgent,
-      href: window.location.href
-    });
-
+    // 1. Standalone Projection Screen View
     if (
       p === '/projection' || 
       p.startsWith('/projection/') || 
@@ -65,25 +40,6 @@ export default function App() {
     ) {
       return <ProjectionView />;
     }
-
-    // Force Mobile Remote View for Capacitor APK, env config, capacitor.config.json or Mobile Devices by default
-    if (modeParam === 'studio') {
-      // Allow explicit request for Desktop Studio view on mobile (e.g., /?mode=studio)
-    } else if (
-      isCapacitorNative ||
-      isEnvForceRemote ||
-      (isCapacitorConfigForceRemote && !window.location.hostname.includes('run.app')) ||
-      (isMobileDevice && (p === '/' || p === '/index.html')) ||
-      modeParam === 'remote' ||
-      p === '/remote' || 
-      p === '/telecommande' || 
-      p === '/mobile' || 
-      p === '/twa' || 
-      p === '/apk'
-    ) {
-      return <MobileRemoteView />;
-    }
-
   }
 
   const [socket, setSocket] = useState<Socket | null>(null);
@@ -664,7 +620,6 @@ export default function App() {
         screens={screens}
         onOpenStyleModal={() => setShowProjectionStyleModal(true)}
         onOpenNetworkShare={() => setShowNetworkShare(true)}
-        onOpenRemote={() => window.open('/remote', '_blank')}
         onOpenHelp={() => setShowHelpModal(true)}
       />
 

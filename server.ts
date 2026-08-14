@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import http from 'http';
 import { Server } from 'socket.io';
 import path from 'path';
@@ -54,6 +55,14 @@ const upload = multer({
   dest: uploadDir,
   limits: { fileSize: 50 * 1024 * 1024 }
 });
+
+// CORS middleware for development origins (e.g. http://localhost:5173), mobile remotes, and local network
+app.use(cors({
+  origin: true,
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS']
+}));
+app.options('*', cors());
 
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));

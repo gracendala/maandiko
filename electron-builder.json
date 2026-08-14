@@ -1,0 +1,21 @@
+{
+  "appId": "com.protextlive.app",
+  "productName": "ProText Live",
+  "asar": false,
+  "directories": {
+    "output": "release"
+  },
+  "files": [
+    "dist/**/*",
+    "electron-main.cjs",
+    "package.json"
+  ],
+  "win": {
+    "target": ["nsis", "portable"],
+    "verifyUpdateCodeSignature": false
+  },
+  "nsis": {
+    "oneClick": false,
+    "allowToChangeInstallationDirectory": true
+  }
+}

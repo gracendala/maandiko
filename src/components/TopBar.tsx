@@ -42,7 +42,6 @@ interface TopBarProps {
   screens?: ProjectionScreenConfig[];
   onOpenStyleModal?: () => void;
   onOpenNetworkShare?: () => void;
-  onOpenRemote?: () => void;
   onOpenHelp?: () => void;
 }
 
@@ -64,7 +63,6 @@ export const TopBar: React.FC<TopBarProps> = ({
   screens = [],
   onOpenStyleModal,
   onOpenNetworkShare,
-  onOpenRemote,
   onOpenHelp
 }) => {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
@@ -602,16 +600,6 @@ export const TopBar: React.FC<TopBarProps> = ({
               </div>
             )}
           </div>
-
-          {/* Mobile Remote Launcher Button */}
-          <button
-            onClick={onOpenRemote || onOpenNetworkShare}
-            className="px-3 py-1.5 rounded-lg font-bold text-xs bg-sky-600/30 hover:bg-sky-600/50 text-sky-200 border border-sky-500/40 flex items-center gap-1.5 transition cursor-pointer shadow-sm"
-            title="Ouvrir l'application de Télécommande Mobile Android / PWA"
-          >
-            <Smartphone className="w-4 h-4 text-sky-400" />
-            <span className="hidden xl:inline">Télécommande Mobile</span>
-          </button>
 
           {/* Help Button */}
           {onOpenHelp && (
